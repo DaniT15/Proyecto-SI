@@ -1,17 +1,18 @@
 import "../estilos/header.css"
 import logo from "../assets/logo.png"
 import userlogo from "../assets/userlogo.png"
-
-
+import { Link } from 'react-router-dom';
 
 export default function Header() {
     return (
         <header class="header">
             <div class="container-logo">
-                <div class="container-img">
+                <Link to="/" className="container-img">
                     <img src={logo} alt="logo" class="logo" />
-                </div>
-                <p>CONÓCENOS</p>
+                </Link>
+                <Link to="/conocenos" className="header-titulos">
+                    <p>CONÓCENOS</p>
+                </Link>
             </div>
             <div class="container-user">
                 <img src={userlogo} alt="usuario" class="user-logo" />
