@@ -7,10 +7,14 @@
     background-color: #FFB974;
     color: #1D3D4B;
     font-size: 3vh;
+    
 }
 .logos-container {
     width: 13vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.contactanos {
+    height: 14vh;
 }

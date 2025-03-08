@@ -15,7 +15,7 @@ export default function Footer () {
                 <img src={x} alt="x" />
                 <img src={instagram} alt="instagram" />
             </div>
-            <div>
+            <div className='contactanos'>
                 <p>CONTÁCTANOS</p>
                 <p>+58 424 0123456</p>
             </div>

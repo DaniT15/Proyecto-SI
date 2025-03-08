@@ -47,3 +47,6 @@
 .header-titulos:hover {
     text-decoration: underline;
 }
+.header-titulos:active {
+    color: black;
+}
