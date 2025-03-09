@@ -40,6 +40,13 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 15%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.carta:hover {
+    transform: scale(1.05);
+}
+.carta:active {
+    background-color: #B8D17A; /* Color más oscuro al hacer clic */
 }
 .img-carta {
     width: 17vw;
