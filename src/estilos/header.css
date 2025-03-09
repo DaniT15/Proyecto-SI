@@ -37,12 +37,19 @@
     margin: 0 3vw 0 0;
     padding: 2vh 0 0 0;
 }
+.container-user:hover {
+    text-decoration: underline;
+}
+.container-user:active {
+    color: black;
+}
 .user-logo {
     height: 5vh;
 }
 .header-titulos {
     text-decoration: none;
     color: #1D3D4B;
+    font-size: 3vh
 }
 .header-titulos:hover {
     text-decoration: underline;
