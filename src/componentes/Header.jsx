@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function Header() {
     return (
         <header class="header">
-            <div class="container-logo">
+            <div class="container-pages">
                 <Link to="/" className="container-img">
                     <img src={logo} alt="logo" class="logo" />
                 </Link>
@@ -15,8 +15,11 @@ export default function Header() {
                 </Link>
             </div>
             <div class="container-user">
-                <img src={userlogo} alt="usuario" class="user-logo" />
-                <p>Iniciar Sesión</p>
+                <Link to="/login" className="container-user">
+                    <img src={userlogo} alt="usuario" class="user-logo" />
+                    <p>Iniciar Sesión</p>
+                </Link>
+                
             </div>
         </header>
     )

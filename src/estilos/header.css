@@ -7,9 +7,9 @@
     background-color: #FFB974;
     color: #1D3D4B;
 }
-.container-logo {
+.container-pages {
     display: flex;
-    width: 22vw;
+    width: 24vw;
     height: 12vh;
     justify-content: space-around;
     align-items: center;
@@ -31,6 +31,7 @@
     height: 12vh;
     display: flex;
     font-size: 2vh;
+    color: #1D3D4B;
     flex-direction: column;
     justify-content: center;
     align-items: center;
