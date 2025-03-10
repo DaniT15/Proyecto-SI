@@ -14,43 +14,45 @@
 .rutas {
     display: flex;
     flex-direction: column;
-    height: auto;
-    width: 100vw;
     justify-content: center;
     align-items: center;
 }
 .cartas {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 80vw;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 40px; 
+    width: auto;
     padding: 0 0 2vh 0;
+    text-align: center;
 }
 .titulo-rutas {
     color: black;
     height: 10vh;
     padding: 3vh 0 3vh 0;
+    
 }
 .carta {
-    height: 45vh;
-    width: 23vw;
-    background-color: #D5EB9C;
+    height: auto;
+    width: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border-radius: 15%;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    padding: 2rem;
 }
+
+
 .carta:hover {
     transform: scale(1.05);
 }
 .carta:active {
-    background-color: #B8D17A; /* Color más oscuro al hacer clic */
+    opacity: 0.9;; 
 }
 .img-carta {
-    width: 17vw;
-    height: 30vh;
+    width: 10rem;
 }
 .div-boton {
     display: flex;
