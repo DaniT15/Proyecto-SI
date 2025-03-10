@@ -1,4 +1,5 @@
 import '../estilos/landingPage.css'
+import { RutaLP } from '../componentes/RutaLP'
 import avila1 from '../assets/avila.png'
 import avila2 from '../assets/avila2.png'
 import sabasnieves from '../assets/sabasnieves.svg'
@@ -18,18 +19,18 @@ export default function LandigPage () {
                     <h1>Conoce nuestras rutas</h1>
                 </div>
                 <div className='cartas'>
-                    <div className='carta'>
-                        <h2>Pico Naiguatá</h2>
-                        <img src={sabasnieves} className='img-carta' />
-                    </div> 
-                    <div className='carta'>
-                        <h2>Piedra del indio</h2>
-                        <img src={naiguata} className='img-carta' />
-                    </div>
-                    <div className='carta'>
-                        <h2>Sabas nieves</h2>
-                        <img src={indio} className='img-carta' />
-                    </div>
+                    
+                    <RutaLP nombre="Pico Naiguatá"
+                        imagen={naiguata}
+                    ></RutaLP>
+                    
+                    <RutaLP nombre="Piedra del indio"
+                        imagen={indio}
+                    ></RutaLP>
+
+                    <RutaLP nombre="Sabas Nieves"
+                        imagen={sabasnieves}
+                    ></RutaLP>
                 </div>
             </div>
             <div className='div-boton'>
