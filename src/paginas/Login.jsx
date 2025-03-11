@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { auth, googleProvider, facebookProvider, signInWithEmailAndPassword, signInWithPopup } from "../config/firebaseConfig";
 import "../estilos/login.css";
@@ -10,7 +11,6 @@ export default function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // Inicio de sesión con Email/Contraseña
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -23,11 +23,10 @@ export default function Login() {
     } catch (err) {
       setError("Correo o contraseña incorrectos ❌");
     }
-    
+
     setLoading(false);
   };
 
-  // Inicio de sesión con Google
   const handleGoogleLogin = async () => {
     setLoading(true);
     setError("");
@@ -43,7 +42,6 @@ export default function Login() {
     setLoading(false);
   };
 
-  // Inicio de sesión con Facebook
   const handleFacebookLogin = async () => {
     setLoading(true);
     setError("");
@@ -60,43 +58,52 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleLogin}>
-        <label>Email:</label>
-        <input
-          type="email"
-          placeholder="Ingresa tu email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+    <div className="margen">
+      <div className="login-container">
+        <h2>Iniciar Sesión</h2>
+        <form onSubmit={handleLogin}>
+          <label>Email:</label>
+          <input
+            type="email"
+            placeholder="Ingresa tu email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <label>Contraseña:</label>
-        <input
-          type="password"
-          placeholder="Ingresa tu contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <label>Contraseña:</label>
+          <input
+            type="password"
+            placeholder="Ingresa tu contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-        {error && <p className="error">{error}</p>}
+          {error && <p className="error">{error}</p>}
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Cargando..." : "Iniciar sesión"}
+          <button type="submit" disabled={loading}>
+            {loading ? "Cargando..." : "Iniciar sesión"}
+          </button>
+        </form>
+
+        <hr />
+
+        <button className="google-btn" onClick={handleGoogleLogin} disabled={loading}>
+          Iniciar sesión con Google
         </button>
-      </form>
 
-      <hr />
+        <button className="facebook-btn" onClick={handleFacebookLogin} disabled={loading}>
+          Iniciar sesión con Facebook
+        </button>
 
-      <button className="google-btn" onClick={handleGoogleLogin} disabled={loading}>
-        Iniciar sesión con Google
-      </button>
+        <Link to="/registrarse">
+          <button className="registrarse-btn">
+            Registrarse
+          </button>
+        </Link>
 
-      <button className="facebook-btn" onClick={handleFacebookLogin} disabled={loading}>
-        Iniciar sesión con Facebook
-      </button>
+      </div>
     </div>
   );
 }
