@@ -16,7 +16,7 @@ export default function LandigPage () {
             </div>
             <div className='rutas'>
                 <div className='titulo-rutas'>
-                    <h1>Conoce nuestras rutas</h1>
+                    <h1>Conoce todas nuestras rutas</h1>
                 </div>
                 <div className='cartas'>
                     <RutaLP nombre="Pico Naiguatá"
