@@ -1,6 +1,6 @@
 import '../estilos/landingPage.css'
 import { RutaLP } from '../componentes/RutaLP'
-import avila1 from '../assets/avila.png'
+import avila1 from '../assets/Avila.png'
 import avila2 from '../assets/avila2.png'
 import sabasnieves from '../assets/sabasnieves.svg'
 import naiguata from '../assets/naiguata.svg'
