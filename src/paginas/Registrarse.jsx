@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import '../estilos/registrarse.css'
 import { useNavigate, Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+import { auth, app } from '../config/firebaseConfig';
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
 
 export default function Register() {
   const [email, setEmail] = useState('');
@@ -10,6 +12,7 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const db = getFirestore(app)
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -23,16 +26,28 @@ export default function Register() {
     }
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const nombreRegistrado = await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(db, "users", nombreRegistrado.user.uid),{
+        email: email,
+        uid: nombreRegistrado.user.uid
+      })
       alert('Registro exitoso ✅');
+
       navigate('/');
     } catch (err) {
-      setError('Error al registrar el usuario ❌');
+      console.log(err)
+      setError('Error al registrar el usuario ❌'); // esta función me destruyó la vida
     }
 
     setLoading(false);
   };
 
+
+
+
+
+
+  
   return (
     <div className="margen">
       <div className="registrar-container">
