@@ -54,7 +54,8 @@
 .header-titulos {
     text-decoration: none;
     color: #1D3D4B;
-    font-size: 2vh
+    font-size: 2vh;
+    margin: 0 3vw;
 }
 .header-titulos:hover {
     text-decoration: underline;
