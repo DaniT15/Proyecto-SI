@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'Myanmar Khyay';
+    src: url('ruta/a/MyanmarKhyay.ttf') format('truetype'); /* Ajusta la ruta y el formato */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Myanmar Khyay', sans-serif; 
+}
+  
 .landing-page {
     height: auto;
     width: 100vw;
@@ -14,43 +25,45 @@
 .rutas {
     display: flex;
     flex-direction: column;
-    height: auto;
-    width: 100vw;
     justify-content: center;
     align-items: center;
 }
 .cartas {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 80vw;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 40px; 
+    width: auto;
     padding: 0 0 2vh 0;
+    text-align: center;
 }
 .titulo-rutas {
     color: black;
     height: 10vh;
     padding: 3vh 0 3vh 0;
+    
 }
 .carta {
-    height: 45vh;
-    width: 23vw;
-    background-color: #D5EB9C;
+    height: auto;
+    width: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border-radius: 15%;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    padding: 2rem;
 }
+
+
 .carta:hover {
     transform: scale(1.05);
 }
 .carta:active {
-    background-color: #B8D17A; /* Color más oscuro al hacer clic */
+    opacity: 0.9;; 
 }
 .img-carta {
-    width: 17vw;
-    height: 30vh;
+    width: 10rem;
 }
 .div-boton {
     display: flex;
@@ -63,6 +76,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 40vw;
     background-color: #FFB974;
     color: black;
@@ -78,6 +92,8 @@
     align-items: center;
     height: auto;
     width: 100vw;
+    background: #FFD8B1;
+
 }
 .titulo-comparte {
     height: auto;
@@ -96,17 +112,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #FFD8B1;
     border-radius: 93px;
+    background: #ffffff;
     width: 62vw;
     padding: 2vh 0;
-    height: 14vh;
+    height: auto;
     margin: 0 0 3vh 0;
 }
+.compartido h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.compartido p {
+    font-family: 'Myanmar Khyay', sans-serif;
+    font-size: 1rem;
+    padding-right: 5px;
+}
+    
+
 .img-comparte {
     object-fit: cover;
     border-radius: 50%;
-    height: 18vh;
-    width: 10vw;
-    margin: 0 2vw 0 0;
+    height: auto;
+    width: auto;
+    max-width: 20wh;
+    max-height: 20vh;
+    margin: 0 2vw 0 2vw;
 }
