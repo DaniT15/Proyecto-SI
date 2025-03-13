@@ -1,6 +1,8 @@
 .margen{
   padding: 10px;
   background-color: #9e9e9e;
+  height: 70vh;
+  display: flex;
 }
 
 .login-container {
