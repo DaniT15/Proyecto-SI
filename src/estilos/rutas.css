@@ -5,6 +5,7 @@
     align-items: start;
     min-height: 70vh;
     padding: 3vh 4vw;
+    background-color: antiquewhite;
 }
 .titulo-div {
     display: flex;
@@ -31,29 +32,38 @@
 .separador {
     margin: 0 0 0 3vw;
 }
-.nuestras-rutas {
-    display: flex;
-    flex-direction: column;
-    padding: 4vh 0;
-}
-.bloque-ruta {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 60vw;
-    height: auto;
-    padding: 2vh 1vw;
-}
-.img-ruta {
-    height: 35vh;
-    width: 20vw;
-    border-radius: 35px;
-}
-.rutas-atributos {
-    display: flex;
-    flex-direction: column;
-    width: 30vw;
-}
+
 .flecha{
     height: 6vh;
+}
+
+.ruta {
+    border: 1px solid #606060;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.ruta:hover{
+    border: 1.5px solid #3a3a3a;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); 
+}
+
+.ruta-imagen {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.ruta-info {
+    flex: 1;
 }
