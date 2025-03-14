@@ -6,6 +6,7 @@ import Footer from './componentes/Footer'
 import Login from './paginas/Login'; 
 import Registrarse from './paginas/Registrarse'
 import Rutas from './paginas/Rutas'
+import Perfil from './paginas/Perfil';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registrarse" element={<Registrarse />} /> 
           <Route path="/rutas" element={<Rutas />} /> 
+          <Route path="/perfil" element={<Perfil />} /> 
         </Routes>
       <Footer />
     </Router>
