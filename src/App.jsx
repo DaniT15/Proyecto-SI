@@ -3,7 +3,7 @@ import LandingPage from './paginas/LandingPage';
 import Conocenos from './paginas/Conocenos';
 import Header from './componentes/Header';
 import Footer from './componentes/Footer'
-import Login from "./paginas/Login"; 
+import Login from './paginas/Login'; 
 import Registrarse from './paginas/Registrarse'
 import Rutas from './paginas/Rutas'
 
