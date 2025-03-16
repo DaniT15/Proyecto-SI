@@ -31,7 +31,8 @@ export default function Register() {
       await setDoc(doc(db, "users", nombreRegistrado.user.uid), {
         email: email,
         uid: nombreRegistrado.user.uid,
-        name: name
+        name: name,
+        tipo: "estudiante"
       })
       alert('Registro exitoso ✅');
 
