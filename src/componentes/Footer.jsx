@@ -6,11 +6,11 @@ import instagram from '../assets/instagram.png'
 
 export default function Footer () {
     return (
-        <footer class="footer">
+        <footer className="footer">
             <div>
-                <img src={unimet} alt="unimet" class="unimet" />
+                <img src={unimet} alt="unimet" className="unimet" />
             </div>
-            <div class="logos-container">
+            <div className="logos-container">
                 <img src={facebook} alt="facebook" />
                 <img src={x} alt="x" />
                 <img src={instagram} alt="instagram" />

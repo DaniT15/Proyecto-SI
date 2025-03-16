@@ -5,6 +5,7 @@ export default function Conocenos () {
     return (
         <div>
             <div className='bg'>
+                
                 <h1>CONÓCENOS</h1>  
             </div>
             <div className='div-info'>
@@ -12,6 +13,7 @@ export default function Conocenos () {
                     <h1>Apasionados por el Ávila</h1>
                     <p>Somos un grupo de amantes de la naturaleza que compartimos la pasión por el senderismo y la belleza del Ávila. Nuestra misión es guiar a otros a descubrir los secretos de esta montaña mágica, crear experiencias inolvidables y que cada vez seamos más personas con amor al senderismo.</p>
                 </div>
+                
                 <div className='info bloque2'>
                     <h1>¿Qué hacemos?</h1>
                     <p>Ofrecemos rutas guiadas de senderismo en el Ávila de todos los niveles, desde caminatas suaves para principiantes hasta ascensos desafiantes para expertos. También organizamos excursiones personalizadas y campamentos en la montaña, para que puedas disfrutar del Ávila a tu manera.</p>
