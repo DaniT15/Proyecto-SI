@@ -50,7 +50,6 @@ const PayPalButtoncomponent = () => {
             <PayPalButtons createOrder={createOrder} onApprove={onAprove} />
         </PayPalScriptProvider>
     )
-
 }
 
 
