@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Myanmar Khyay';
-    src: url('ruta/a/MyanmarKhyay.ttf') format('truetype'); /* Ajusta la ruta y el formato */
+    src: url('ruta/a/MyanmarKhyay.ttf') format('truetype'); /* Updated path to the correct location */
     font-weight: normal;
     font-style: normal;
 }
@@ -8,7 +8,7 @@
 body {
     font-family: 'Myanmar Khyay', sans-serif; 
 }
-  
+
 .landing-page {
     height: auto;
     width: 100vw;

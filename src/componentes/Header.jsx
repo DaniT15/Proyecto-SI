@@ -21,10 +21,10 @@ export default function Header() {
 
 
     return (
-        <header class="header">
-            <div class="container-pages">
+        <header className="header">
+            <div className="container-pages">
                 <Link to="/" className="container-img">
-                    <img src={logo} alt="logo" class="logo" />
+                    <img src={logo} alt="logo" className="logo" />
                 </Link>
                 <Link to="/conocenos" className="header-titulos">
                     <p>CONÓCENOS</p>
@@ -33,16 +33,16 @@ export default function Header() {
                     <p>RUTAS</p>
                 </Link>
             </div>
-            <div class="container-user">
+            <div className="container-user">
                 {!logged ?
                     <Link to="/login" className="container-user">
-                        <img src={userlogo} alt="usuario" class="user-logo" />
+                        <img src={userlogo} alt="usuario" className="user-logo" />
                         <p>Iniciar Sesión</p>
                     </Link> :
                     <div className="container-user-registered">
                         <button onClick={handleLogout}>Log out</button>
                         <Link>
-                            <img src={userlogo} alt="usuario" class="user-logo" />
+                            <img src={userlogo} alt="usuario" className="user-logo" />
                             <p>Ver Perfil: {profile.name}</p>
                         </Link>
                     </div>
