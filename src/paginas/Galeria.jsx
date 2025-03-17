@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
-import '../estilos/galeria.css';
 
 const Galeria = () => {
   const [fotos, setFotos] = useState([]);
@@ -19,15 +18,13 @@ const Galeria = () => {
   }, []);
 
   return (
-    <div className="galeria-contenedor">
-      <h1 className="galeria-titulo">Galería</h1>
-      <p className="galeria-descripcion">
-        Revive nuestras experiencias a través de nuestra galería de fotos inolvidables
-      </p>
-      <div className="galeria-grid">
+    <div>
+      <h1>Galería</h1>
+      <p>Revive nuestras experiencias a través de nuestra galería de fotos inolvidables</p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
         {fotos.map((foto) => (
-          <div key={foto.id} className="foto-card">
-            <img src={foto.url} alt={`Foto ${foto.year}`} />
+          <div key={foto.id} style={{ textAlign: 'center' }}>
+            <img src={foto.url} alt={`Foto ${foto.year}`} style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
             <h3>{foto.year}</h3>
           </div>
         ))}

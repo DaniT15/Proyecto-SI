@@ -8,7 +8,7 @@ import Registrarse from './paginas/Registrarse'
 import Rutas from './paginas/Rutas'
 import EditarPerfil from './paginas/EditarPerfil';
 import VerPerfil from './paginas/VerPerfil';
-import Galeria from './componentes/Galeria';
+import Galeria from './paginas/Galeria';
 import SubirFoto from './componentes/SubirFoto';
 
 export default function App() {

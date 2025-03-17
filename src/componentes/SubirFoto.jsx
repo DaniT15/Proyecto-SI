@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { db, storage } from '../firebase/firebaseConfig';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { collection, addDoc } from 'firebase/firestore';
+import '../estilos/galeria.css';
 
 const SubirFoto = () => {
   const [file, setFile] = useState(null);
@@ -35,9 +36,9 @@ const SubirFoto = () => {
   };
 
   return (
-    <div>
-      <h2>Subir Foto a la Galería</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="subir-foto-contenedor">
+      <h2 className="subir-foto-titulo">Subir Foto a la Galería</h2>
+      <form onSubmit={handleSubmit} className="subir-foto-formulario">
         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
         <input
           type="number"
@@ -47,7 +48,7 @@ const SubirFoto = () => {
         />
         <button type="submit">Subir Foto</button>
       </form>
-      {status && <p>{status}</p>}
+      {status && <p className="status-mensaje">{status}</p>}
     </div>
   );
 };
