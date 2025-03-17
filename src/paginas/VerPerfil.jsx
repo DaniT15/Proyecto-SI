@@ -1,5 +1,5 @@
 import '../estilos/verPerfil.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from "../contextos/UserContext";
 import { useContext } from 'react';
 import { getAuth, signOut } from "firebase/auth";
@@ -13,7 +13,7 @@ export default function VerPerfil() {
     const { user, setUser, profile, logged } = contextUser
 
     const handleLogout = async () => {
-        await signOut(auth)
+        await signOut(auth);
     }
 
 
@@ -37,9 +37,14 @@ export default function VerPerfil() {
                 </div>
 
             </div>
-            <Link to="/editarPerfil" className="editar-perfil">
+            <Link to="/editarPerfil">
                 <button className="editar-perfil">
-                    Editar perfil
+                    Editar Perfil
+                </button>
+            </Link>
+            <Link to="/">
+                <button className="cerrar-sesion" onClick={handleLogout}>
+                    Cerrar Sesión
                 </button>
             </Link>
         </div>

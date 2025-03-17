@@ -44,3 +44,12 @@
 .editar-perfil:hover {
     background-color: #c8912a;
 }
+
+.cerrar-sesion {
+    transition: background-color 0.3s ease;
+    background-color: #de3f3f;
+}
+
+.cerrar-sesion:hover {
+    background-color: #aa1c1c;
+}

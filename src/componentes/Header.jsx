@@ -40,7 +40,6 @@ export default function Header() {
                         <p>Iniciar Sesión</p>
                     </Link> :
                     <div className="container-user-registered">
-                        <button onClick={handleLogout}>Log out</button>
                         <Link to="/verPerfil" className="container-user">
                             <img src={userlogo} alt="usuario" className="user-logo" />
                             <p>Ver Perfil: {profile.name}</p>
