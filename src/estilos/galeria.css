@@ -1,0 +1,33 @@
+.gallery-page {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .gallery-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .gallery-item {
+    border: 5px solid #ccc;
+    padding: 0.5rem;
+    background-color: white;
+  }
+  
+  .gallery-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .gallery-year {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+  }

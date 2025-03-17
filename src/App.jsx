@@ -8,6 +8,8 @@ import Registrarse from './paginas/Registrarse'
 import Rutas from './paginas/Rutas'
 import EditarPerfil from './paginas/EditarPerfil';
 import VerPerfil from './paginas/VerPerfil';
+import Galeria from './componentes/Galeria';
+import SubirFoto from './componentes/SubirFoto';
 
 export default function App() {
   return (
@@ -21,6 +23,8 @@ export default function App() {
           <Route path="/rutas" element={<Rutas />} /> 
           <Route path="/verPerfil" element={<VerPerfil />} />
           <Route path="/editarPerfil" element={<EditarPerfil />} />
+          <Route path="/galeria" element={<Galeria />} />
+          <Route path="/subirFoto" element={<SubirFoto />} />
         </Routes>
       <Footer />
     </Router>
