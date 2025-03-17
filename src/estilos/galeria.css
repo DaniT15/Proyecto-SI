@@ -90,7 +90,7 @@ body {
     color: #555;
   }
   
-  /* Responsive para móviles */
+  /* Responsive */
   @media (max-width: 600px) {
     .foto-card {
       width: 100%;
