@@ -32,7 +32,9 @@ export default function Register() {
         email: email,
         uid: nombreRegistrado.user.uid,
         name: name,
-        tipo: "estudiante"
+        tipo: "estudiante",
+        imagen:"",
+        telefono:""
       })
       alert('Registro exitoso ✅');
 

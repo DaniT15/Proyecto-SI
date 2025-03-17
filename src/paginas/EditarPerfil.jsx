@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { auth, db, doc, getDoc, setDoc, updateDoc } from "../config/firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import "../estilos/perfil.css";
+import "../estilos/editarPerfil.css";
 
-export default function Perfil() {
+export default function EditarPerfil() {
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");

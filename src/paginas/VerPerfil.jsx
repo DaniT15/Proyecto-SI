@@ -1,0 +1,47 @@
+import '../estilos/verPerfil.css'
+import { Link } from 'react-router-dom';
+import { UserContext } from "../contextos/UserContext";
+import { useContext } from 'react';
+import { getAuth, signOut } from "firebase/auth";
+import { app } from "../config/firebaseConfig";
+import userlogo from "../assets/userlogo.png"
+
+const auth = getAuth(app)
+
+export default function VerPerfil() {
+    const contextUser = useContext(UserContext)
+    const { user, setUser, profile, logged } = contextUser
+
+    const handleLogout = async () => {
+        await signOut(auth)
+    }
+
+
+    return (
+        <div className="perfil-container">
+            <h1>Perfil</h1>
+            <img src={userlogo} alt="Foto de perfil" className="perfil-foto" />
+
+            <div className="info">
+                <div className="dato">
+                    <label>Nombre</label>
+                    <p>{profile.name}</p>
+                </div>
+                <div className="dato">
+                    <label>Número telefónico</label>
+                    <p>{profile.telefono}</p>
+                </div>
+                <div className="dato">
+                    <label>Correo</label>
+                    <p>{profile.email}</p>
+                </div>
+
+            </div>
+            <Link to="/editarPerfil" className="editar-perfil">
+                <button className="editar-perfil">
+                    Editar perfil
+                </button>
+            </Link>
+        </div>
+    )
+}
