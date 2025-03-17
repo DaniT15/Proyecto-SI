@@ -81,9 +81,10 @@ body {
     background-color: #FFB974;
     color: black;
     border-radius: 37px;
+    text-decoration: none;
 }
-.boton:active {
-    background-color: #FFA94D;
+.boton:hover {
+    background-color: #e59d55;
 }
 .div-comparte {
     display: flex;

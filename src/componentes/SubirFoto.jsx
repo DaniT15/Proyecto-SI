@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { db, storage } from '../firebase/firebaseConfig';
+import { db, storage } from '../config/firebaseConfig';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { collection, addDoc } from 'firebase/firestore';
 import '../estilos/galeria.css';

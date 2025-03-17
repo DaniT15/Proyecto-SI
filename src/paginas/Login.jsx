@@ -3,6 +3,7 @@ import { Link} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { auth, googleProvider, facebookProvider, signInWithEmailAndPassword, signInWithPopup } from "../config/firebaseConfig";
 import "../estilos/login.css";
+import { getFirestore, doc, getDoc } from "firebase/firestore"; 
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const db = getFirestore()
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,10 +19,28 @@ export default function Login() {
     setError("");
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      alert("Inicio de sesión exitoso ✅");
-      navigate("/");
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      if (userDocSnap.exists()) {
+        const userData = userDocSnap.data();
+        if (userData.tipo === "estudiante" || userData.tipo === "guia") { 
+          alert("Inicio de sesión exitoso ✅");
+          navigate("/");
+        } else if (userData.tipo === "administrador") { 
+          alert("Inicio de sesión exitoso ✅");
+          navigate("/menuAdmin");
+        } else {
+          alert("Inicio de sesión exitoso ✅");
+          navigate("/"); 
+        }
+      } else {
+        setError("Usuario no encontrado ❌");
+      }
     } catch (err) {
+      console.log(err)
       setError("Correo o contraseña incorrectos ❌");
     }
 
@@ -32,13 +52,32 @@ export default function Login() {
     setError("");
 
     try {
-      await signInWithPopup(auth, googleProvider);
-      alert("Inicio de sesión con Google exitoso ✅");
-      navigate("/");
+      const userCredential = await signInWithPopup(auth, googleProvider);
+      const user = userCredential.user; 
+
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+
+      if (userDocSnap.exists()) {
+        const userData = userDocSnap.data();
+        if (userData.tipo === "estudiante" || userData.tipo === "guia") {
+          alert("Inicio de sesión con Google exitoso ✅");
+          console.log(userData.tipo)
+          navigate("/");
+        } else if (userData.tipo === "administrador") { 
+          alert("Inicio de sesión con Google exitoso ✅");
+          navigate("/menuAdmin");
+        } else {
+          alert("Inicio de sesión con Google exitoso ✅");
+          navigate("/"); 
+        }
+      } else {
+        setError("Usuario no encontrado ❌");
+      }
     } catch (err) {
       setError("Error al iniciar sesión con Google ❌");
     }
-    
+
     setLoading(false);
   };
 
@@ -47,12 +86,31 @@ export default function Login() {
     setError("");
 
     try {
-      await signInWithPopup(auth, facebookProvider);
-      alert("Inicio de sesión con Facebook exitoso ✅");
-      navigate("/");
+      const userCredential = await signInWithPopup(auth, facebookProvider);
+      const user = userCredential.user; 
+
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+
+      if (userDocSnap.exists()) {
+        const userData = userDocSnap.data();
+        if (userData.tipo === "estudiante" || userData.tipo === "guia") { 
+          alert("Inicio de sesión con Facebook exitoso ✅");
+          navigate("/");
+        } else if (userData.tipo === "administrador") { 
+          alert("Inicio de sesión con Facebook exitoso ✅");
+          navigate("/menuAdmin");
+        } else {
+          alert("Inicio de sesión con Facebook exitoso ✅");
+          navigate("/");
+        }
+      } else {
+        setError("Usuario no encontrado ❌");
+      }
     } catch (err) {
       setError("Error al iniciar sesión con Facebook ❌");
     }
+
 
     setLoading(false);
   };

@@ -10,6 +10,7 @@ import EditarPerfil from './paginas/EditarPerfil';
 import VerPerfil from './paginas/VerPerfil';
 import Galeria from './paginas/Galeria';
 import SubirFoto from './componentes/SubirFoto';
+import MenuAdmin from './paginas/MenuAdmin';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/editarPerfil" element={<EditarPerfil />} />
           <Route path="/galeria" element={<Galeria />} />
           <Route path="/subirFoto" element={<SubirFoto />} />
+          <Route path="/menuAdmin" element={<MenuAdmin />} />
         </Routes>
       <Footer />
     </Router>

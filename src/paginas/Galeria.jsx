@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { db } from '../firebase/firebaseConfig';
+import { db } from '../config/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 
 const Galeria = () => {
@@ -18,7 +18,7 @@ const Galeria = () => {
   }, []);
 
   return (
-    <div>
+    <div className='container'>
       <h1>Galería</h1>
       <p>Revive nuestras experiencias a través de nuestra galería de fotos inolvidables</p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
