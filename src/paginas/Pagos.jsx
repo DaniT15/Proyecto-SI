@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../config/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import BotonPaypal from '../componentes/BotonPaypal';
-import './estilos/pagos.css';
+import '../estilos/pagos.css';
 
 function Pagos() {
   const [user, setUser] = useState(null);
