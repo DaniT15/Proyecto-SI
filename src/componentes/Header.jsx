@@ -14,18 +14,19 @@ export default function Header() {
     const contextUser = useContext(UserContext)
     const { user, setUser, profile, logged } = contextUser
 
-    const handleLogout = async () => {
-        await signOut(auth)
-    }
-
-
 
     return (
         <header className="header">
             <div className="container-pages">
-                <Link to="/" className="container-img">
-                    <img src={logo} alt="logo" className="logo" />
-                </Link>
+                {profile && profile.tipo === "administrador" ? (
+                    <Link to="/menuAdmin" className="container-img">
+                        <img src={logo} alt="logo" className="logo" />
+                    </Link>
+                ) : (
+                    <Link to="/" className="container-img">
+                        <img src={logo} alt="logo" className="logo" />
+                    </Link>
+                )}
                 <Link to="/conocenos" className="header-titulos">
                     <p>CONÓCENOS</p>
                 </Link>

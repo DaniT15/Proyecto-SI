@@ -11,6 +11,12 @@ import VerPerfil from './paginas/VerPerfil';
 import Galeria from './paginas/Galeria';
 import SubirFoto from './componentes/SubirFoto';
 import MenuAdmin from './paginas/MenuAdmin';
+import RegistrarGuia from './paginas/RegistrarGuia';
+import CalendarioActividades from './paginas/CalendarioActividades';
+import EditarRuta from './paginas/EditarActividad';
+import EditarActividad from './paginas/EditarActividad';
+import CrearActividad from './paginas/CrearActividad';
+import RegistrarRuta from './paginas/RegistrarRuta';
 
 export default function App() {
   return (
@@ -27,6 +33,11 @@ export default function App() {
           <Route path="/galeria" element={<Galeria />} />
           <Route path="/subirFoto" element={<SubirFoto />} />
           <Route path="/menuAdmin" element={<MenuAdmin />} />
+          <Route path="/registrarGuia" element={<RegistrarGuia />} />
+          <Route path="/calendarioActividades" element={<CalendarioActividades />} />
+          <Route path="/editarRuta" element={<EditarActividad />} />
+          <Route path="/crearActividad" element={<CrearActividad />} />
+          <Route path="/registrarRuta" element={<RegistrarRuta />} />
         </Routes>
       <Footer />
     </Router>
