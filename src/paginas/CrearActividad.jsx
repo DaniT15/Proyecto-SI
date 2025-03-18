@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
 import moment from 'moment';
+import '../estilos/crearActividad.css'
 
 
 export default function CrearActividad() {
@@ -35,7 +36,6 @@ export default function CrearActividad() {
                 fecha: fechaHora,
                 rutaId,
             });
-            setStatus('Actividad registrada con éxito.');
             setTitulo('');
             setDescripcion('');
             setFecha('');
@@ -43,42 +43,45 @@ export default function CrearActividad() {
             setRutaId('');
         } catch (error) {
             console.error('Error al registrar la actividad:', error);
-            setStatus('Error al registrar la actividad.');
+            setStatus('Error al registrar la actividad ❌');
         }
     };
 
     return (
-        <div>
-            <h2>Registrar Actividad</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Título:</label>
-                    <input type="text" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
-                </div>
-                <div>
-                    <label>Descripción:</label>
-                    <textarea value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
-                </div>
-                <div>
-                    <label>Fecha:</label>
-                    <input type="date" value={fecha} onChange={(e) => setFecha(e.target.value)} />
-                </div>
-                <div>
-                    <label>Hora:</label>
-                    <input type="time" value={hora} onChange={(e) => setHora(e.target.value)} />
-                </div>
-                <div>
-                    <label>Ruta:</label>
-                    <select value={rutaId} onChange={(e) => setRutaId(e.target.value)}>
-                        <option value="">Seleccionar Ruta</option>
-                        {rutas.map(ruta => (
-                            <option key={ruta.id} value={ruta.id}>{ruta.nombre}</option>
-                        ))}
-                    </select>
-                </div>
-                <button type="submit">Registrar</button>
-            </form>
-            {status && <p>{status}</p>}
+        <div className='margen'>
+            <div className='crearActividad-container'>
+                <h2>Registrar Actividad</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className='info'>
+                        <label>Título:</label>
+                        <input type="text" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
+                    </div>
+                    <div className='info'>
+                        <label>Descripción:</label>
+                        <textarea className="descripcion" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
+                    </div>
+                    <div className='info'>
+                        <label>Fecha:</label>
+                        <input type="date" value={fecha} onChange={(e) => setFecha(e.target.value)} />
+                    </div>
+                    <div className='info'>
+                        <label>Hora:</label>
+                        <input type="time" value={hora} onChange={(e) => setHora(e.target.value)} />
+                    </div>
+                    <div className='info'>
+                        <label>Ruta:</label>
+                        <select value={rutaId} onChange={(e) => setRutaId(e.target.value)}>
+                            <option value="">Seleccionar Ruta</option>
+                            {rutas.map(ruta => (
+                                <option key={ruta.id} value={ruta.id}>{ruta.nombre}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <button type="submit">Registrar</button>
+                </form>
+                {status && <p>{status}</p>}
+            </div>
         </div>
+
     );
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
-import { useNavigate } from "react-router-dom";
+import '../estilos/registrarRuta.css'
+
 
 export default function RegistrarRuta() {
     const [nombre, setNombre] = useState('');
@@ -9,7 +10,7 @@ export default function RegistrarRuta() {
     const [dificultad, setDificultad] = useState('');
     const [tiempo, setTiempo] = useState('');
     const [distancia, setDistancia] = useState('');
-    const [fotos, setFotos] = useState(''); 
+    const [fotos, setFotos] = useState('');
     const [status, setStatus] = useState('');
 
     const handleSubmit = async (e) => {
@@ -37,36 +38,38 @@ export default function RegistrarRuta() {
     };
 
     return (
-        <div>
-            <h2>Registrar Ruta</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Nombre:</label>
-                    <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-                </div>
-                <div>
-                    <label>Descripción:</label>
-                    <textarea value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
-                </div>
-                <div>
-                    <label>Dificultad:</label>
-                    <input type="text" value={dificultad} onChange={(e) => setDificultad(e.target.value)} />
-                </div>
-                <div>
-                    <label>Duración (minutos):</label>
-                    <input type="number" value={tiempo} onChange={(e) => setTiempo(e.target.value)} />
-                </div>
-                <div>
-                    <label>Distancia (km):</label>
-                    <input type="number" step="0.01" value={distancia} onChange={(e) => setDistancia(e.target.value)} />
-                </div>
-                <div>
-                    <label>Fotos (URLs separadas por comas):</label>
-                    <input type="text" value={fotos} onChange={(e) => setFotos(e.target.value)} />
-                </div>
-                <button type="submit">Registrar</button>
-            </form>
-            {status && <p>{status}</p>}
+        <div className='margen'>
+            <div className='registrarRuta-container'>
+                <h2>Registrar Ruta</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className='info'>
+                        <label>Nombre:</label>
+                        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                    </div>
+                    <div className='info'>
+                        <label>Descripción:</label>
+                        <textarea className='descripcion' value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
+                    </div>
+                    <div className='info'>
+                        <label>Dificultad:</label>
+                        <input type="text" value={dificultad} onChange={(e) => setDificultad(e.target.value)} />
+                    </div>
+                    <div className='info'>
+                        <label>Duración (minutos):</label>
+                        <input type="number" value={tiempo} onChange={(e) => setTiempo(e.target.value)} />
+                    </div>
+                    <div className='info'>
+                        <label>Distancia (km):</label>
+                        <input type="number" step="0.01" value={distancia} onChange={(e) => setDistancia(e.target.value)} />
+                    </div>
+                    <div className='info'>
+                        <label>Fotos (URLs separadas por comas):</label>
+                        <input type="text" value={fotos} onChange={(e) => setFotos(e.target.value)} />
+                    </div>
+                    <button type="submit">Registrar</button>
+                </form>
+                {status && <p>{status}</p>}
+            </div>
         </div>
     );
 }
