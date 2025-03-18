@@ -4,12 +4,14 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
-import '../estilos/calendario.css' 
+import '../estilos/calendario.css'
 
 const localizer = momentLocalizer(moment);
 
 export default function Calendario() {
-  const [eventos, setEventos] = useState([]);
+  const [actividades, setActividades] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+
   const CustomToolbar = (toolbar) => {
     const goToToday = () => {
       toolbar.date.setMonth(new Date().getMonth());
@@ -35,18 +37,18 @@ export default function Calendario() {
     return (
       <div className="rbc-toolbar">
         <span className="rbc-toolbar-label">{label()}</span>
-        <button onClick={goToBack}>{'<'}</button>
-        <button onClick={goToToday}>Today</button>
-        <button onClick={goToNext}>{'>'}</button>
+        <button onClick={goToBack}>{'Mes Anterior'}</button>
+        <button onClick={goToToday}>Mes Actual</button>
+        <button onClick={goToNext}>{'Siguiente Mes'}</button>
       </div>
     );
   };
 
   useEffect(() => {
-    const obtenerEventos = async () => {
-      const eventosCollection = collection(db, 'actividades');
-      const eventosSnapshot = await getDocs(eventosCollection);
-      const eventosLista = eventosSnapshot.docs.map(doc => {
+    const obtenerActividades = async () => {
+      const actividadesCollection = collection(db, 'actividades');
+      const actividadesSnapshot = await getDocs(actividadesCollection);
+      const actividadesLista = actividadesSnapshot.docs.map(doc => {
         const data = doc.data();
         return {
           title: data.titulo,
@@ -56,27 +58,45 @@ export default function Calendario() {
           rutaId: data.rutaId,
         };
       });
-      setEventos(eventosLista);
+      setActividades(actividadesLista);
     };
 
-    obtenerEventos();
+    obtenerActividades();
   }, []);
+
+  const handleSelectEvent = (event) => {
+    setSelectedEvent(event);
+  };
+
 
   return (
     <div className="calendario-container" style={{ height: 1000 }}>
+      {selectedEvent && (
+        <div className="event-details">
+          <h2>{selectedEvent.title}</h2>
+          <p><strong>Descripción:</strong> {selectedEvent.descripcion}</p>
+          <p><strong>Fecha:</strong> {moment(selectedEvent.fechaOriginal).format('DD/MM/YYYY HH:mm')}</p>
+          <p><strong>Ruta ID:</strong> {selectedEvent.rutaId}</p>
+        </div>
+      )}
+
       <Calendar
         localizer={localizer}
-        events={eventos}
+        events={actividades}
         startAccessor="start"
         endAccessor="end"
         titleAccessor="title"
         tooltipAccessor="descripcion"
         view="month"
         components={{
-          toolbar: CustomToolbar, 
+          toolbar: CustomToolbar,
         }}
+        onSelectEvent={handleSelectEvent}
+
+
 
       />
+
     </div>
   );
 }
