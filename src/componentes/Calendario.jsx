@@ -73,7 +73,7 @@ export default function Calendario() {
         tooltipAccessor="descripcion"
         view="month"
         components={{
-          toolbar: CustomToolbar, // Reemplazamos el toolbar predeterminado
+          toolbar: CustomToolbar, 
         }}
 
       />
