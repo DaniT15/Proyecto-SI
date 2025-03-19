@@ -9,6 +9,7 @@ import Rutas from './paginas/Rutas'
 import EditarPerfil from './paginas/EditarPerfil';
 import VerPerfil from './paginas/VerPerfil';
 import Galeria from './paginas/Galeria';
+import SubirFoto from './componentes/SubirFoto';
 import MenuAdmin from './paginas/MenuAdmin';
 import RegistrarGuia from './paginas/RegistrarGuia';
 import CalendarioActividades from './paginas/CalendarioActividades';
