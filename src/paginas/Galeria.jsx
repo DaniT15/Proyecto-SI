@@ -4,6 +4,7 @@ import { storage } from '../config/firebaseConfig';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { UserContext } from '../contextos/UserContext';
+import '../estilos/galeria.css';
 
 const Galeria = () => {
   const [fotos, setFotos] = useState([]);
