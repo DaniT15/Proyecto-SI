@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { auth, db, doc, getDoc, setDoc, updateDoc } from '../config/firebaseConfig';
 import { useNavigate } from 'react-router-dom';
-import FotoPerfil from '../componentes/FotoPerfil'; // Importa el componente FotoPerfil
+import FotoPerfil from '../componentes/FotoPerfil'; 
+import { UserContext } from "../contextos/UserContext"; // Importa el contexto
 
 import "../estilos/editarPerfil.css";
 
@@ -13,6 +14,9 @@ export default function EditarPerfil() {
   const navigate = useNavigate();
 
   const user = auth.currentUser;
+
+  const contextUser = useContext(UserContext); // Usa el contexto
+  const { profile, setProfile } = contextUser; // Extrae profile y setProfile
 
   useEffect(() => {
     if (user) {
@@ -34,11 +38,14 @@ export default function EditarPerfil() {
         setTelefono(userData.telefono || "");
         setEmail(userData.email || user.email || "");
       } else {
-        await setDoc(doc(db, "usuarios", user.uid), { 
+        await setDoc(docRef, { 
           nombre: user.displayName || "", 
           telefono: "", 
           email: user.email || "",
         });
+        setNombre(user.displayName || "");
+        setTelefono("");
+        setEmail(user.email || "");
       }
     } catch (error) {
       console.error("Error cargando datos:", error);
@@ -49,15 +56,26 @@ export default function EditarPerfil() {
   const guardarDatos = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     try {
+      // Actualiza los datos en Firebase
       await updateDoc(doc(db, "usuarios", user.uid), { nombre, telefono, email });
+  
+      // Actualiza el estado del perfil globalmente
+      setProfile({
+        ...profile,
+        nombre: nombre,
+        telefono: telefono,
+        email: email, // También actualizamos email por consistencia
+      });
+  
       alert("Datos actualizados correctamente ✅");
+      navigate("/verPerfil"); // Opcional: redirigir al perfil después de guardar
     } catch (error) {
       console.error("Error actualizando datos:", error);
       alert("Hubo un problema al actualizar ❌");
     }
-
+  
     setLoading(false);
   };
 
@@ -65,7 +83,6 @@ export default function EditarPerfil() {
     <div className="perfil-container">
       <h2>Editar Perfil</h2>
 
-      {/* Aquí agregamos el componente FotoPerfil */}
       <div className="foto-perfil-container">
         <FotoPerfil />
       </div>

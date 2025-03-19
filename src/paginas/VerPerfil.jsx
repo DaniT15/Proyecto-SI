@@ -25,7 +25,7 @@ export default function VerPerfil() {
             <div className="info">
                 <div className="dato">
                     <label>Nombre</label>
-                    <p>{profile.name}</p>
+                    <p>{profile.nombre}</p>
                 </div>
                 <div className="dato">
                     <label>Número telefónico</label>
