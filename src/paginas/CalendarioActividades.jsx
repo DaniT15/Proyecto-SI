@@ -6,12 +6,14 @@ import '../estilos/calendarioActividades.css'
 export default function CalendarioActividades() {
     return (
         <div className='container'>
-            <Link to="/crearActividad">
-                <button>Crear Actividad</button>
-            </Link>
-            <Link to="/registrarRuta">
-                <button>Registrar Ruta</button>
-            </Link>
+            <div className='botones-calendario'>
+                <Link to="/crearActividad">
+                    <button>Crear Actividad</button>
+                </Link>
+                <Link to="/registrarRuta">
+                    <button>Registrar Ruta</button>
+                </Link>
+            </div>
             <Calendario></Calendario>
         </div>
     )
