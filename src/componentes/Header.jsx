@@ -33,6 +33,9 @@ export default function Header() {
                 <Link to="/rutas" className="header-titulos">
                     <p>RUTAS</p>
                 </Link>
+                <Link to="/galeria" className="header-titulos">
+                    <p>GALERÍA</p>
+                </Link>
             </div>
             <div className="container-user">
                 {!logged ?
