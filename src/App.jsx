@@ -30,7 +30,6 @@ export default function App() {
           <Route path="/verPerfil" element={<VerPerfil />} />
           <Route path="/editarPerfil" element={<EditarPerfil />} />
           <Route path="/galeria" element={<Galeria />} />
-          <Route path="/subirFoto" element={<SubirFoto />} />
           <Route path="/menuAdmin" element={<MenuAdmin />} />
           <Route path="/registrarGuia" element={<RegistrarGuia />} />
           <Route path="/calendarioActividades" element={<CalendarioActividades />} />
