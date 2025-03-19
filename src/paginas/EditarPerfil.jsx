@@ -7,7 +7,7 @@ import { UserContext } from "../contextos/UserContext"; // Importa el contexto
 import "../estilos/editarPerfil.css";
 
 export default function EditarPerfil() {
-  const [nombre, setNombre] = useState("");
+  const [name, setName] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,21 +29,21 @@ export default function EditarPerfil() {
   const cargarDatos = async () => {
     setLoading(true);
     try {
-      const docRef = doc(db, "usuarios", user.uid);
+      const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const userData = docSnap.data();
-        setNombre(userData.nombre || "");
+        setName(userData.name || "");
         setTelefono(userData.telefono || "");
         setEmail(userData.email || user.email || "");
       } else {
         await setDoc(docRef, { 
-          nombre: user.displayName || "", 
+          name: user.displayName || "", 
           telefono: "", 
           email: user.email || "",
         });
-        setNombre(user.displayName || "");
+        setName(user.displayName || "");
         setTelefono("");
         setEmail(user.email || "");
       }
@@ -59,12 +59,12 @@ export default function EditarPerfil() {
   
     try {
       // Actualiza los datos en Firebase
-      await updateDoc(doc(db, "usuarios", user.uid), { nombre, telefono, email });
+      await updateDoc(doc(db, "users", user.uid), { name, telefono, email });
   
       // Actualiza el estado del perfil globalmente
       setProfile({
         ...profile,
-        nombre: nombre,
+        name: name,
         telefono: telefono,
         email: email, // También actualizamos email por consistencia
       });
@@ -89,7 +89,7 @@ export default function EditarPerfil() {
 
       <form onSubmit={guardarDatos}>
         <label>Nombre:</label>
-        <input type="text" placeholder="Ingresa tu nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+        <input type="text" placeholder="Ingresa tu nombre" value={name} onChange={(e) => setName(e.target.value)} required />
 
         <label>Teléfono:</label>
         <input type="text" placeholder="Número de teléfono" value={telefono} onChange={(e) => setTelefono(e.target.value)} />

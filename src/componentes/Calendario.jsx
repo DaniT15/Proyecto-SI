@@ -56,6 +56,7 @@ export default function Calendario() {
           end: data.fecha.toDate(),
           descripcion: data.descripcion,
           rutaId: data.rutaId,
+          guiaNombre: data.guiaNombre,
         };
       });
       setActividades(actividadesLista);
@@ -76,7 +77,9 @@ export default function Calendario() {
           <h2>{selectedEvent.title}</h2>
           <p><strong>Descripción:</strong> {selectedEvent.descripcion}</p>
           <p><strong>Fecha:</strong> {moment(selectedEvent.fechaOriginal).format('DD/MM/YYYY HH:mm')}</p>
+          <p><strong>Guia:</strong> {selectedEvent.guiaNombre}</p>
           <p><strong>Ruta ID:</strong> {selectedEvent.rutaId}</p>
+          
         </div>
       )}
 
