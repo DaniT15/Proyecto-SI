@@ -43,7 +43,9 @@ export default function Rutas() {
             </div>
             <div className="lista-rutas">
                 {rutas.map(ruta => (
-                    <Ruta key={ruta.id} rutaId={ruta.id} />
+                    <div className="div-rutas-boton-reserva">
+                        <Ruta key={ruta.id} rutaId={ruta.id}  />
+                    </div>
                 ))}
             </div>
 
