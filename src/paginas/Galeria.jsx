@@ -4,92 +4,30 @@ import { storage } from '../config/firebaseConfig';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { UserContext } from '../contextos/UserContext';
+import '../estilos/galeria.css'; // Importa el archivo CSS desde la carpeta estilos
+
+import Foto1 from '../assets/senderismo-puente-mayo-C40iVJh0.png';
+import Foto2 from '../assets/screenshot_2022_01_05_163542_1641414983651-B8WuXdfB.png'; // Cambia esto por la segunda imagen
+import Foto3 from '../assets/images-2gHkLhHA.png'; // Cambia esto por la tercera imagen
+import Foto4 from '../assets/images12-oeE7nE2w.png'; // Cambia esto por la cuarta imagen
+import Foto5 from '../assets/images2-DSUdwqox.png'; // Cambia esto por la cuarta imagen
+import Foto6 from '../assets/images5-D-sqajzY.png'; // Cambia esto por la cuarta imagen
 
 const Galeria = () => {
-  const [fotos, setFotos] = useState([]);
-  const [foto, setFoto] = useState(null);
-  const [year, setYear] = useState('');
-  const { logged } = useContext(UserContext);
-
-  useEffect(() => {
-    const fetchFotos = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, 'galeria'));
-        const fotosArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        fotosArray.sort((a, b) => b.year - a.year);
-        setFotos(fotosArray);
-      } catch (error) {
-        console.error("Error al obtener fotos:", error);
-      }
-    };
-  
-    fetchFotos();
-  }, []);
-
-  const subirFoto = async (e) => {
-    e.preventDefault();
-    console.log("Subiendo foto...");
-  
-    if (!foto || !year) {
-      alert('Completa todos los campos');
-      return;
-    }
-  
-    try {
-      console.log("Subiendo a Storage...");
-      const storageRef = ref(storage, `galeria/${Date.now()}_${foto.name}`);
-      await uploadBytes(storageRef, foto);
-      console.log("Foto subida a Storage, obteniendo URL...");
-      const url = await getDownloadURL(storageRef);
-      console.log("URL obtenida:", url);
-  
-      console.log("Guardando en Firestore...");
-      await addDoc(collection(db, 'galeria'), { url, year: parseInt(year) });
-      console.log("Foto guardada en Firestore");
-  
-      alert('Foto subida correctamente');
-      
-      // Limpiar y recargar
-      setFoto(null);
-      setYear('');
-      document.querySelector('form').reset(); // limpia el input de archivo
-  
-      const querySnapshot = await getDocs(collection(db, 'galeria'));
-      const fotosArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      fotosArray.sort((a, b) => b.year - a.year);
-      setFotos(fotosArray);
-    } catch (error) {
-      console.error("Error al subir foto:", error);
-      alert("Error al subir la foto. Intenta de nuevo.");
-    }
-  };
+  // Arreglo de fotos con las imágenes importadas y sus años
+  const fotos = [
+    { id: 1, url: Foto1, year: 2025 },
+    { id: 2, url: Foto2, year: 2024 },
+    { id: 3, url: Foto3, year: 2023 },
+    { id: 4, url: Foto4, year: 2022 },
+    { id: 5, url: Foto5, year: 2021 },
+    { id: 6, url: Foto6, year: 2020 }, 
+  ];
 
   return (
-    <div className='container'>
+    <div className="container">
       <h1>Galería</h1>
       <p>Revive nuestras experiencias a través de nuestra galería de fotos inolvidables</p>
-      
-      {logged ? (
-        <form onSubmit={subirFoto}>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setFoto(e.target.files[0])}
-            required
-          />
-          <input
-            type="number"
-            placeholder="Año"
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            required
-          />
-          <button type="submit">Subir Foto</button>
-        </form>
-      ) : (
-        <p>Debes iniciar sesión para subir fotos.</p>
-      )}
-
       <div className="galeria-grid">
         {fotos.map((foto) => (
           <div key={foto.id} className="foto-card">
