@@ -5,7 +5,6 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
 import '../estilos/calendario.css'
-import Ruta from "../componentes/Ruta"
 
 const localizer = momentLocalizer(moment);
 
@@ -57,7 +56,6 @@ export default function Calendario() {
           end: data.fecha.toDate(),
           descripcion: data.descripcion,
           rutaId: data.rutaId,
-          guiaNombre: data.guiaNombre,
         };
       });
       setActividades(actividadesLista);
@@ -79,8 +77,6 @@ export default function Calendario() {
           <p><strong>Descripción:</strong> {selectedEvent.descripcion}</p>
           <p><strong>Fecha:</strong> {moment(selectedEvent.fechaOriginal).format('DD/MM/YYYY HH:mm')}</p>
           <p><strong>Ruta ID:</strong> {selectedEvent.rutaId}</p>
-          <p><strong>Guía:</strong> {selectedEvent.guiaNombre}</p>
-          
         </div>
       )}
 
