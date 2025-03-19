@@ -70,7 +70,7 @@ export default function EditarPerfil() {
       });
   
       alert("Datos actualizados correctamente ✅");
-      navigate("/verPerfil"); // Opcional: redirigir al perfil después de guardar
+      navigate("/verPerfil"); // Redirigir al perfil después de guardar
     } catch (error) {
       console.error("Error actualizando datos:", error);
       alert("Hubo un problema al actualizar ❌");
