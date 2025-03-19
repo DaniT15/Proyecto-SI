@@ -38,7 +38,7 @@ export default function Rutas() {
                     <img className="separador" src={separador} alt="" />
                     <div className="filtrado">
                         <h2>popularidad</h2>
-                        <img className="flecha" src={flecha} alt="" />
+                        <img className="flecha" src={flecha} alt=""/>
                     </div>
                 </div>
             </div>
