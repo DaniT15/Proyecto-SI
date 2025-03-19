@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
-import { auth, db, doc, getDoc, setDoc, updateDoc } from "../config/firebaseConfig";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { auth, db, doc, getDoc, setDoc, updateDoc } from '../config/firebaseConfig';
+import { useNavigate } from 'react-router-dom';
+import FotoPerfil from '../componentes/FotoPerfil'; // Importa el componente FotoPerfil
+
 import "../estilos/editarPerfil.css";
 
 export default function EditarPerfil() {
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
-  const [foto, setFoto] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -32,13 +33,11 @@ export default function EditarPerfil() {
         setNombre(userData.nombre || "");
         setTelefono(userData.telefono || "");
         setEmail(userData.email || user.email || "");
-        setFoto(userData.foto || user.photoURL || "");
       } else {
         await setDoc(doc(db, "usuarios", user.uid), { 
           nombre: user.displayName || "", 
           telefono: "", 
           email: user.email || "",
-          foto: user.photoURL || "" 
         });
       }
     } catch (error) {
@@ -52,7 +51,7 @@ export default function EditarPerfil() {
     setLoading(true);
 
     try {
-      await updateDoc(doc(db, "usuarios", user.uid), { nombre, telefono, email, foto });
+      await updateDoc(doc(db, "usuarios", user.uid), { nombre, telefono, email });
       alert("Datos actualizados correctamente ✅");
     } catch (error) {
       console.error("Error actualizando datos:", error);
@@ -65,11 +64,13 @@ export default function EditarPerfil() {
   return (
     <div className="perfil-container">
       <h2>Editar Perfil</h2>
-      <form onSubmit={guardarDatos}>
-        <label>Foto de Perfil:</label>
-        <img src={foto || "https://via.placeholder.com/150"} alt="Foto de perfil" className="perfil-foto" />
-        <input type="text" placeholder="URL de la foto" value={foto} onChange={(e) => setFoto(e.target.value)} />
 
+      {/* Aquí agregamos el componente FotoPerfil */}
+      <div className="foto-perfil-container">
+        <FotoPerfil />
+      </div>
+
+      <form onSubmit={guardarDatos}>
         <label>Nombre:</label>
         <input type="text" placeholder="Ingresa tu nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
 

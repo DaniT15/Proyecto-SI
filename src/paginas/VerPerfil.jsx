@@ -16,11 +16,11 @@ export default function VerPerfil() {
         await signOut(auth);
     }
 
-
     return (
         <div className="perfil-container">
             <h1>Perfil</h1>
-            <img src={userlogo} alt="Foto de perfil" className="perfil-foto" />
+            {/* Muestra la foto de perfil */}
+            <img src={profile?.foto_perfil || userlogo} alt="Foto de perfil" className="perfil-foto" />
 
             <div className="info">
                 <div className="dato">
@@ -35,7 +35,6 @@ export default function VerPerfil() {
                     <label>Correo</label>
                     <p>{profile.email}</p>
                 </div>
-
             </div>
             <Link to="/editarPerfil">
                 <button className="editar-perfil">
