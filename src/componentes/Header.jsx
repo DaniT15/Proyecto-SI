@@ -9,28 +9,33 @@ import { app } from "../config/firebaseConfig";
 
 const auth = getAuth(app)
 
-
 export default function Header() {
     const contextUser = useContext(UserContext)
     const { user, setUser, profile, logged } = contextUser
 
-    const handleLogout = async () => {
-        await signOut(auth)
-    }
-
-
-
     return (
         <header className="header">
             <div className="container-pages">
-                <Link to="/" className="container-img">
-                    <img src={logo} alt="logo" className="logo" />
-                </Link>
+                {profile && profile.tipo === "administrador" ? (
+                    <Link to="/menuAdmin" className="container-img">
+                        <img src={logo} alt="logo" className="logo" />
+                    </Link>
+                ) : (
+                    <Link to="/" className="container-img">
+                        <img src={logo} alt="logo" className="logo" />
+                    </Link>
+                )}
                 <Link to="/conocenos" className="header-titulos">
                     <p>CONÓCENOS</p>
                 </Link>
                 <Link to="/rutas" className="header-titulos">
                     <p>RUTAS</p>
+                </Link>
+                <Link to="/galeria" className="header-titulos">
+                    <p>GALERÍA</p>
+                </Link>
+                <Link to="/comentarios" className="header-titulos">
+                    <p>{!logged ? "Ir al Foro" : "FORO"}</p>
                 </Link>
             </div>
             <div className="container-user">
@@ -40,16 +45,13 @@ export default function Header() {
                         <p>Iniciar Sesión</p>
                     </Link> :
                     <div className="container-user-registered">
-                        <button onClick={handleLogout}>Log out</button>
-                        <Link>
+                        <Link to="/verPerfil" className="container-user">
                             <img src={userlogo} alt="usuario" className="user-logo" />
-                            <p>Ver Perfil: {profile.name}</p>
+                            <p>Ver Perfil: {profile?.name}</p>
                         </Link>
                     </div>
-
-
                 }
-
+                
             </div>
         </header>
     )

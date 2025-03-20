@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, app } from '../config/firebaseConfig';
 import { getFirestore, setDoc, doc } from 'firebase/firestore';
 
-export default function Register() {
+export default function RegistrarGuia() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -32,13 +32,13 @@ export default function Register() {
         email: email,
         uid: nombreRegistrado.user.uid,
         name: name,
-        tipo: "estudiante",
-        imagen:"",
-        telefono:""
+        tipo: "guia",
+        imagen: "",
+        telefono: ""
       })
       alert('Registro exitoso ✅');
 
-      navigate('/');
+      navigate('/menuAdmin');
     } catch (err) {
       console.log(err)
       setError('Error al registrar el usuario ❌');
@@ -56,7 +56,7 @@ export default function Register() {
   return (
     <div className="margen">
       <div className="registrar-container">
-        <h2>Registrarse</h2>
+        <h2>Registrar Guía</h2>
         <form onSubmit={handleRegister}>
           <label>Nombre:</label>
           <input
@@ -97,15 +97,10 @@ export default function Register() {
           {error && <p className="error">{error}</p>}
 
           <button type="submit" disabled={loading}>
-            {loading ? 'Cargando...' : 'Registrarse'}
+            {loading ? 'Cargando...' : 'Registrar Guía'}
           </button>
         </form>
 
-        <Link to="/login">
-          <button className="login-btn">
-            Iniciar Sesión
-          </button>
-        </Link>
       </div>
     </div>
   );

@@ -7,8 +7,9 @@ import naiguata from '../assets/naiguata.svg'
 import indio from '../assets/elindio.svg'
 import profe from '../assets/profe.svg'
 import carlo from '../assets/carlo.png'
+import { Link } from 'react-router-dom'
 
-export default function LandigPage () {
+export default function LandigPage() {
     return (
         <div className='landing-page'>
             <div className='container-avila1'>
@@ -23,7 +24,7 @@ export default function LandigPage () {
                         imagen={naiguata}
                         bgColor={"#D5EB9C"}
                     ></RutaLP>
-                    
+
                     <RutaLP nombre="Piedra del indio"
                         imagen={indio}
                         bgColor={"#B1EB9C"}
@@ -41,9 +42,10 @@ export default function LandigPage () {
                 </div>
             </div>
             <div className='div-boton'>
-                <div className='boton'>
-                    <h2>Ver todas las rutas</h2>
-                </div>
+                <Link to="/rutas" className='boton'>
+                        <h2>Ver todas las rutas</h2>
+                </Link>
+
             </div>
             <div className='div-comparte'>
                 <div className='titulo-comparte'>
@@ -52,7 +54,7 @@ export default function LandigPage () {
                 <div className='compartidos'>
                     <div className='compartido'>
                         <div>
-                            <img src={profe} className='img-comparte'  />
+                            <img src={profe} className='img-comparte' />
                         </div>
                         <div>
                             <h3>FRANKLIN SANDOVAL</h3>
@@ -61,7 +63,7 @@ export default function LandigPage () {
                     </div>
                     <div className='compartido'>
                         <div>
-                            <img src={carlo} className='img-comparte'  />
+                            <img src={carlo} className='img-comparte' />
                         </div>
                         <div>
                             <h3>CARLO CARPENTIERI</h3>
