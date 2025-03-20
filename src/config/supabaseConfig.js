@@ -3,8 +3,13 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = "https://eggykcrwwrqpsodakecr.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnZ3lrY3J3d3JxcHNvZGFrZWNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzNTQxNjksImV4cCI6MjA1NzkzMDE2OX0.cGq3Hqnv2qJshifO47LUsnzL3AtAAYmq8ei9ZOKgKNA";
 
+// Crea el cliente de Supabase
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+// Exporta el cliente de Supabase
+export { supabase };
+
+// Función para subir imágenes
 export const uploadImage = async (file, bucket, folder) => {
   try {
     const fileExt = file.name.split(".").pop();
