@@ -9,11 +9,9 @@ import { app } from "../config/firebaseConfig";
 
 const auth = getAuth(app)
 
-
 export default function Header() {
     const contextUser = useContext(UserContext)
     const { user, setUser, profile, logged } = contextUser
-
 
     return (
         <header className="header">
@@ -36,6 +34,9 @@ export default function Header() {
                 <Link to="/galeria" className="header-titulos">
                     <p>GALERÍA</p>
                 </Link>
+                <Link to="/comentarios" className="header-titulos">
+                    <p>{!logged}FORO</p>
+                </Link>
             </div>
             <div className="container-user">
                 {!logged ?
@@ -46,13 +47,11 @@ export default function Header() {
                     <div className="container-user-registered">
                         <Link to="/verPerfil" className="container-user">
                             <img src={userlogo} alt="usuario" className="user-logo" />
-                            <p>Ver Perfil: {profile.name}</p>
+                            <p>Ver Perfil: {profile?.name}</p>
                         </Link>
                     </div>
-
-
                 }
-
+                
             </div>
         </header>
     )

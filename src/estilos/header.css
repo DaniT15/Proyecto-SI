@@ -63,3 +63,17 @@
 .header-titulos:active {
     color: black;
 }
+
+.forum-button {
+    background-color: #FFB974;
+    color: #1D3D4B; 
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; 
+}
+
+.forum-button:hover {
+    background-color: #e6a65c; 
+}
