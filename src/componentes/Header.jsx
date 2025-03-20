@@ -35,7 +35,7 @@ export default function Header() {
                     <p>GALERÍA</p>
                 </Link>
                 <Link to="/comentarios" className="header-titulos">
-                    <p>{!logged ? "Ir al Foro" : "FORO"}</p>
+                    <p>{!logged}FORO</p>
                 </Link>
             </div>
             <div className="container-user">
