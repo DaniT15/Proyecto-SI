@@ -25,20 +25,11 @@ export default function LandigPage() {
                         bgColor={"#D5EB9C"}
                     ></RutaLP>
 
-                    <RutaLP nombre="Piedra del indio"
-                        imagen={indio}
-                        bgColor={"#B1EB9C"}
-                    ></RutaLP>
-
                     <RutaLP nombre="Sabas Nieves"
                         imagen={sabasnieves}
                         bgColor={"#95CFA6"}
                     ></RutaLP>
 
-                    <RutaLP nombre="Ruta4"
-                        imagen={sabasnieves}
-                        bgColor={"#95CFC2"}
-                    ></RutaLP>
                 </div>
             </div>
             <div className='div-boton'>

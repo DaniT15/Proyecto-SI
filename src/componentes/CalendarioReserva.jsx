@@ -5,6 +5,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
 import '../estilos/calendario.css';
+import { Link } from 'react-router-dom';
 
 
 const localizer = momentLocalizer(moment);
@@ -71,7 +72,7 @@ export default function CalendarioReserva({ rutaId }) {
         };
 
         obtenerActividades();
-    }, [rutaId]); 
+    }, [rutaId]);
 
     const handleSelectEvent = (event) => {
         setSelectedEvent(event);
@@ -79,28 +80,26 @@ export default function CalendarioReserva({ rutaId }) {
 
     const handleReservar = async () => {
         if (selectedEvent) {
-          try {
-            const actividadDocRef = doc(db, 'actividades', selectedEvent.id);
-            await updateDoc(actividadDocRef, {
-              reservas: true,
-            });
-    
-            const updatedActividades = actividades.map(actividad => {
-              if (actividad.id === selectedEvent.id) {
-                return { ...actividad, reservas: true };
-              }
-              return actividad;
-            });
-            setActividades(updatedActividades);
-            setSelectedEvent({ ...selectedEvent, reservas: true });
-            alert('Reserva realizada con éxito');
-          } catch (error) {
-            console.error('Error al reservar:', error);
-            alert('Error al realizar la reserva');
-          }
+            try {
+                const actividadDocRef = doc(db, 'actividades', selectedEvent.id);
+                await updateDoc(actividadDocRef, {
+                    reservas: true,
+                });
+
+                const updatedActividades = actividades.map(actividad => {
+                    if (actividad.id === selectedEvent.id) {
+                        return { ...actividad, reservas: true };
+                    }
+                    return actividad;
+                });
+                setActividades(updatedActividades);
+                setSelectedEvent({ ...selectedEvent, reservas: true });
+            } catch (error) {
+                console.error('Error al reservar:', error);
+            }
         }
-      };
-    
+    };
+
 
     return (
         <div className="calendario-container" style={{ height: 1000 }}>
@@ -108,7 +107,10 @@ export default function CalendarioReserva({ rutaId }) {
                 <div className="event-details">
                     <h2>{selectedEvent.title}</h2>
                     <p><strong>Fecha:</strong> {moment(selectedEvent.start).format('DD/MM/YYYY')}</p>
-                    <button className='boton-de-reservar' onClick={handleReservar}>Reservar</button>
+                    <Link to="/pagos" className='boton-de-reservar'>
+                        <button  onClick={handleReservar}>Reservar</button>
+                    </Link>
+
                 </div>
             )}
 
