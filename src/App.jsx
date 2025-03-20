@@ -16,6 +16,7 @@ import EditarRuta from './paginas/EditarActividad';
 import EditarActividad from './paginas/EditarActividad';
 import CrearActividad from './paginas/CrearActividad';
 import RegistrarRuta from './paginas/RegistrarRuta';
+import Pagos from './paginas/Pagos';
 import Reservar from './paginas/Reservar';
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/editarRuta" element={<EditarActividad />} />
           <Route path="/crearActividad" element={<CrearActividad />} />
           <Route path="/registrarRuta" element={<RegistrarRuta />} />
+          <Route path="/pagos" element={<Pagos />} />
           <Route path="/reservar" element={<Reservar />} />
         </Routes>
       <Footer />
