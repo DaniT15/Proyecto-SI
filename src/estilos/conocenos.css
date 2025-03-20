@@ -35,7 +35,8 @@
 }
 .bloque2 {
     background-color: #F0D5A6;
-    align-items: self-end;
+    /*align-items: self-end;*/
+    padding-left: 6vh 6vw;
 }
 .bloque3 {
     background-color: #F0BDA6;
