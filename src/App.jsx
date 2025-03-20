@@ -16,6 +16,7 @@ import EditarRuta from './paginas/EditarActividad';
 import EditarActividad from './paginas/EditarActividad';
 import CrearActividad from './paginas/CrearActividad';
 import RegistrarRuta from './paginas/RegistrarRuta';
+import Reservar from './paginas/Reservar';
 
 export default function App() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/editarRuta" element={<EditarActividad />} />
           <Route path="/crearActividad" element={<CrearActividad />} />
           <Route path="/registrarRuta" element={<RegistrarRuta />} />
+          <Route path="/reservar" element={<Reservar />} />
         </Routes>
       <Footer />
     </Router>
