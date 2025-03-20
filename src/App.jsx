@@ -1,4 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { UserContext } from "./contextos/UserContext";
+
+
 import LandingPage from './paginas/LandingPage';
 import Conocenos from './paginas/Conocenos';
 import Header from './componentes/Header';
@@ -21,6 +25,8 @@ import Comentarios from './paginas/Comentarios';
 import Reservar from './paginas/Reservar';
 
 export default function App() {
+  const profileContext = useContext(UserContext)
+  const { logged, profile } = profileContext
   return (
     <Router>
       <Header />
@@ -39,7 +45,7 @@ export default function App() {
         <Route path="/editarRuta" element={<EditarActividad />} />
         <Route path="/crearActividad" element={<CrearActividad />} />
         <Route path="/registrarRuta" element={<RegistrarRuta />} />
-        <Route path="/pagos" element={<Pagos />} />
+        <Route path="/pagos" element={logged?<Pagos />:<Login/>} />
         <Route path="/comentarios" element={<Comentarios />} />
         <Route path="/reservar" element={<Reservar />} />
       </Routes>
