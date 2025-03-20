@@ -25,15 +25,15 @@ export default function VerPerfil() {
             <div className="info">
                 <div className="dato">
                     <label>Nombre</label>
-                    <p>{profile.name}</p>
+                    <p>{profile?.name}</p>
                 </div>
                 <div className="dato">
                     <label>Número telefónico</label>
-                    <p>{profile.telefono}</p>
+                    <p>{profile?.telefono}</p>
                 </div>
                 <div className="dato">
                     <label>Correo</label>
-                    <p>{profile.email}</p>
+                    <p>{profile?.email}</p>
                 </div>
             </div>
             <Link to="/editarPerfil">
