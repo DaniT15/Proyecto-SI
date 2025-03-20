@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../estilos/comentarios.css';
-import { auth, db } from '../config/firebaseConfig'; // Importa db desde firebaseConfig
+import { auth, db } from '../config/firebaseConfig';
 import { UserContext } from "../contextos/UserContext";
 import { useContext } from 'react';
-import { collection, addDoc, onSnapshot } from "firebase/firestore"; // Importa funciones de Firestore
+import { collection, addDoc, onSnapshot } from "firebase/firestore";
 
 export default function Comentarios() {
     const contextUser = useContext(UserContext);
@@ -12,12 +12,10 @@ export default function Comentarios() {
     const [newComment, setNewComment] = useState('');
 
     useEffect(() => {
-        // Escucha cambios en la autenticación
         const unsubscribeAuth = auth.onAuthStateChanged((user) => {
             setUser(user);
         });
 
-        // Escucha cambios en los comentarios de Firestore
         const commentsCollection = collection(db, 'comments');
         const unsubscribeComments = onSnapshot(commentsCollection, (snapshot) => {
             const commentsList = snapshot.docs.map((doc) => ({
@@ -37,8 +35,7 @@ export default function Comentarios() {
         e.preventDefault();
         if (newComment.trim() === '') return;
 
-        let userName = 'Usuario Anónimo'; // Valor predeterminado
-
+        let userName = 'Usuario Anónimo';
         if (profile) {
             userName = profile?.displayName || profile?.name || profile?.email.split('@')[0] || 'Usuario Anónimo';
         }
@@ -68,7 +65,7 @@ export default function Comentarios() {
             </form>
             <div className="comentario-list">
                 {comments.map((comment) => (
-                    <div key={comment.id} className="comentario-item compartido1"> {/* Cambia compartido1 a compartido */}
+                    <div key={comment.id} className="comentario-item compartido1">
                         <p>
                             <strong>{comment.user}</strong>: {comment.text}
                         </p>
