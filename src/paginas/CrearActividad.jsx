@@ -52,7 +52,6 @@ export default function CrearActividad() {
                 rutaId,
                 guiaId,
                 guiaNombre,
-                reservas: false,
             });
             setTitulo('');
             setDescripcion('');
